@@ -23,17 +23,19 @@
 !include Silicon/Qualcomm/QcomPkg/QcomCommonDsc.inc
 
 [PcdsFixedAtBuild.common]
-  # A RAM física do SDM439 (Olive) começa em 0x40000000
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x40000000         
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x80000000         # Define o limite inicial (ex: 2GB), expansível via Partitions
+  # Base da RAM física e tamanho total (3GB)
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000         
+  gArmTokenSpaceGuid.PcdSystemMemorySize|0xC0000000         
 
+  # Endereços do GIC (Obrigatório para SDM439)
+  gArmTokenSpaceGuid.PcdGicDistributorBase|0x0b000000
+  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0b002000
   # Vetores e Stack realocados para evitar a zona de memória protegida/pstore
   gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9F88C000     
   gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz|19200000
   gArmTokenSpaceGuid.PcdArmArchTimerSecIntrNum|17
   gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|18
-  gArmTokenSpaceGuid.PcdGicDistributorBase|0x17a00000
-  gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x17b00000
+  gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x0b002000
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00000439
   gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9F890000      # UEFI Stack alinhada com o Memory Map
@@ -43,7 +45,7 @@
   # Heap do DXE e Endereço do Framebuffer (Olive utiliza 0x9D400000 para o splash)
   gQcomTokenSpaceGuid.PcdUefiMemPoolBase|0xA0000000         
   gQcomTokenSpaceGuid.PcdUefiMemPoolSize|0x2E000000         
-  gQcomTokenSpaceGuid.PcdMipiFrameBufferAddress|0x9D400000
+  gQcomTokenSpaceGuid.PcdMipiFrameBufferAddress|0x90000000
 
   gArmPlatformTokenSpaceGuid.PcdCoreCount|8
   gArmPlatformTokenSpaceGuid.PcdClusterCount|2

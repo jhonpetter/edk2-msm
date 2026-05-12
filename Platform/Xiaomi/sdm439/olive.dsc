@@ -17,8 +17,11 @@
   GCC:*_*_AARCH64_CC_FLAGS = -DENABLE_SIMPLE_INIT -DENABLE_LINUX_SIMPLE_MASS_STORAGE
 
 [PcdsFixedAtBuild.common]
+  gArmTokenSpaceGuid.PcdFdBaseAddress|0x80200000
+  gArmTokenSpaceGuid.PcdFdSize|0x00800000
   gQcomTokenSpaceGuid.PcdMipiFrameBufferWidth|720
   gQcomTokenSpaceGuid.PcdMipiFrameBufferHeight|1520
+  gQcomTokenSpaceGuid.PcdMipiFrameBufferAddress|0x90000000
   # Simple Init
   gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|270
 

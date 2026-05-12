@@ -183,7 +183,7 @@ APRIORI DXE {
     SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/XhciDxe/XhciDxe.efi
     SECTION UI = "XhciDxe"
   }
-
+/*
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMouseDxe/UsbMouseDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
@@ -221,5 +221,5 @@ APRIORI DXE {
     SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbfnChgDxe/UsbfnChgDxe.depex
     SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbfnChgDxe/UsbfnChgDxe.efi
     SECTION UI = "UsbfnChgDxe"
-  }
+  }*/
 }

@@ -20,7 +20,7 @@ function platform_build_bootimg(){
 		python3 "${ROOTDIR}/tools/mkbootimg.py" \
 		--kernel "${WORKSPACE}/uefi-${DEVICE}-kernel" \
 		--ramdisk ramdisk \
-		--kernel_offset 0x00000000 \
+		--kernel_offset 0x80200000  \
 		--ramdisk_offset 0x00000000 \
 		--tags_offset 0x00000000 \
 		--os_version "${BOOTIMG_OS_VERSION}" \
