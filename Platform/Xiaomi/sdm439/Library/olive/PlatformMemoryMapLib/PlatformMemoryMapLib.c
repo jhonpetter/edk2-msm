@@ -31,15 +31,20 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
     {"Splash Region",     0x90000000, 0x01400000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_THROUGH_XN},
 
     /* HLOS free memory */
-    {"HLOS Region",       0x91400000, 0x0E400000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
+    {"HLOS Region",       0x91400000, 0x0E380000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
 
-    /* UEFI firmware structure area: 0x9F800000 - 0xA0000000 (follows SDM845 pattern) */
-    {"FV Region",         0x9F800000, 0x00400000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
-    {"UEFI FD",           0x9FC00000, 0x00300000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-    {"SEC Heap",          0x9FF00000, 0x0008C000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
-    {"CPU Vectors",       0x9FF8C000, 0x00001000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-    {"MMU PageTables",    0x9FF8D000, 0x00003000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
-    {"UEFI Stack",        0x9FF90000, 0x00040000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
+    /* UEFI boot structures (placed before FV Region) */
+    {"CPU Vectors",       0x9F780000, 0x00001000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
+    {"MMU PageTables",    0x9F790000, 0x00010000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
+    {"UEFI Stack",        0x9F7C0000, 0x00040000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
+
+    /* UEFI Firmware Volume (7MB, ends before PStore) */
+    {"FV Region",         0x9F800000, 0x00700000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
+
+    /* PStore region (from DTS pstore_reserve_mem_region) */
+    {"PStore Region",     0x9FF00000, 0x00100000, NoHob,  MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
+
+    /* UEFI internal structures (inside PStore NoHob area, reclaimed after ExitBootServices) */
     {"RSRV1",             0x9FFD0000, 0x0000A000, AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN},
     {"TPMControl",        0x9FFDA000, 0x00003000, AddMem, MEM_RES, WRITE_COMBINEABLE, Reserv, UNCACHED_UNBUFFERED_XN},
     {"Reset Data",        0x9FFDD000, 0x00004000, AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, UNCACHED_UNBUFFERED_XN},
@@ -52,11 +57,8 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
     /* DXE Heap */
     {"DXE Heap",          0xA0000000, 0x2E000000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
 
-    /* UEFI FD - where BootShim loads the firmware image */
-    {"UEFI FD",           0xCE000000, 0x00700000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-
-    /* Remaining Bank 2 RAM after FD */
-    {"RAM Partition 3",   0xCE700000, 0x31900000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
+    /* Remaining Bank 2 RAM */
+    {"RAM Partition 3",   0xCE000000, 0x32000000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
 
     /* MMIO regions */
     {"IMEM Base",         0x08600000, 0x00001000, NoHob,  MMAP_IO, INITIALIZED, Conv,   NS_DEVICE},
