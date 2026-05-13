@@ -25,13 +25,13 @@
 ################################################################################
 
 [FD.sdm439_UEFI]
-BaseAddress   = 0x80200000|gArmTokenSpaceGuid.PcdFdBaseAddress
-Size          = 0x00800000|gArmTokenSpaceGuid.PcdFdSize
+BaseAddress   = 0x9F800000|gArmTokenSpaceGuid.PcdFdBaseAddress
+Size          = 0x00700000|gArmTokenSpaceGuid.PcdFdSize
 ErasePolarity = 1
 
 # This one is tricky, it must be: BlockSize * NumBlocks = Size
 BlockSize     = 0x00001000
-NumBlocks     = 0x800
+NumBlocks     = 0x700
 
 ################################################################################
 #
@@ -49,7 +49,7 @@ NumBlocks     = 0x800
 #
 ################################################################################
 
-0x00000000|0x00800000
+0x00000000|0x00700000
 gArmTokenSpaceGuid.PcdFvBaseAddress|gArmTokenSpaceGuid.PcdFvSize
 FV = FVMAIN_COMPACT
 

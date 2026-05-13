@@ -23,28 +23,29 @@
 !include Silicon/Qualcomm/QcomPkg/QcomCommonDsc.inc
 
 [PcdsFixedAtBuild.common]
-  # Base da RAM física e tamanho total (3GB)
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000         
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0xC0000000         
+  # Physical RAM base and size (Bank 2: 2GB)
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
+  gArmTokenSpaceGuid.PcdSystemMemorySize|0x80000000
 
-  # Endereços do GIC (Obrigatório para SDM439)
+  # GIC addresses (from DTS interrupt-controller@b000000)
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x0b000000
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0b002000
-  # Vetores e Stack realocados para evitar a zona de memória protegida/pstore
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9F88C000     
+  # CPU vector base (aligned with PlatformMemoryMapLib)
+  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9F780000
+  # Timer config (from DTS: PPI 2=SecPhys, PPI 3=NonSecPhys => hwirq 18,19)
   gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz|19200000
-  gArmTokenSpaceGuid.PcdArmArchTimerSecIntrNum|17
-  gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|18
+  gArmTokenSpaceGuid.PcdArmArchTimerSecIntrNum|18
+  gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|19
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x0b002000
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00000439
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9F890000      # UEFI Stack alinhada com o Memory Map
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000      # 256K stack
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9F7C0000
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000
   gEmbeddedTokenSpaceGuid.PcdPrePiCpuIoSize|44
 
-  # Heap do DXE e Endereço do Framebuffer (Olive utiliza 0x9D400000 para o splash)
-  gQcomTokenSpaceGuid.PcdUefiMemPoolBase|0xA0000000         
-  gQcomTokenSpaceGuid.PcdUefiMemPoolSize|0x2E000000         
+  # DXE Heap and Framebuffer
+  gQcomTokenSpaceGuid.PcdUefiMemPoolBase|0xA0000000
+  gQcomTokenSpaceGuid.PcdUefiMemPoolSize|0x2E000000
   gQcomTokenSpaceGuid.PcdMipiFrameBufferAddress|0x90000000
 
   gArmPlatformTokenSpaceGuid.PcdCoreCount|8
