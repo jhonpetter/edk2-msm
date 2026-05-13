@@ -34,17 +34,17 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
     {"HLOS Region",       0x91400000, 0x0E380000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
 
     /* UEFI boot structures (placed before FV Region) */
-    {"CPU Vectors",       0x9F780000, 0x00001000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-    {"MMU PageTables",    0x9F790000, 0x00010000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
+    {"CPU Vectors",       0x9F780000, 0x00010000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
+    {"MMU PageTables",    0x9F790000, 0x00030000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
     {"UEFI Stack",        0x9F7C0000, 0x00040000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
 
-    /* UEFI Firmware Volume (7MB, ends before PStore) */
-    {"FV Region",         0x9F800000, 0x00700000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
+    /* UEFI FD (BootShim target: must be WRITE_BACK to allow code execution) */
+    {"UEFI FD",           0x9F800000, 0x00700000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
 
-    /* PStore region (from DTS pstore_reserve_mem_region) */
-    {"PStore Region",     0x9FF00000, 0x00100000, NoHob,  MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
+    /* SEC Heap (early PrePi allocation area, follows SDM845 pattern) */
+    {"SEC Heap",          0x9FF00000, 0x000D0000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
 
-    /* UEFI internal structures (inside PStore NoHob area, reclaimed after ExitBootServices) */
+    /* UEFI internal structures */
     {"RSRV1",             0x9FFD0000, 0x0000A000, AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN},
     {"TPMControl",        0x9FFDA000, 0x00003000, AddMem, MEM_RES, WRITE_COMBINEABLE, Reserv, UNCACHED_UNBUFFERED_XN},
     {"Reset Data",        0x9FFDD000, 0x00004000, AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, UNCACHED_UNBUFFERED_XN},
