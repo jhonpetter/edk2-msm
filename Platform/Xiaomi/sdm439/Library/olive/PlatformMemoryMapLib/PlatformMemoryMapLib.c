@@ -11,13 +11,14 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
     /* --- DDR Bank 2 (2GB): 0x80000000 - 0x100000000 --- */
     {"RAM Partition",     0x80000000, 0x04A00000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
 
-    /* Reserved firmware regions (from DTS reserved-memory) */
+    /* Reserved firmware regions (from DTS other_ext_region: 0x84A00000, size 0x1D00000) */
     {"Other Ext Region",  0x84A00000, 0x01900000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
     {"SMEM",              0x86300000, 0x00100000, AddMem, MEM_RES, WRITE_COMBINEABLE, Reserv, UNCACHED_UNBUFFERED},
+    {"Other Ext Region 2",0x86400000, 0x00300000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
 
-    /* UEFI Runtime */
-    {"Runtime Data",      0x86400000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN},
-    {"Runtime Code",      0x86480000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtCode, WRITE_BACK_XN},
+    /* UEFI Runtime (in 1MB gap between Other Ext end and Modem, per IOMAN) */
+    {"Runtime Data",      0x86700000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN},
+    {"Runtime Code",      0x86780000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtCode, WRITE_BACK_XN},
 
     /* Subsystem firmware regions (from DTS reserved-memory) */
     {"Modem Region",      0x86800000, 0x05500000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
