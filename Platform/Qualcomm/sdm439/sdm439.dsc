@@ -30,16 +30,14 @@
   # GIC addresses (from DTS interrupt-controller@b000000)
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x0b000000
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0b002000
-  # CPU vector base (aligned with PlatformMemoryMapLib)
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9F780000
-  # Timer config (from DTS: PPI 2=SecPhys, PPI 3=NonSecPhys => hwirq 18,19)
+  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9FF8C000
   gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz|19200000
-  gArmTokenSpaceGuid.PcdArmArchTimerSecIntrNum|18
-  gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|19
+  gArmTokenSpaceGuid.PcdArmArchTimerSecIntrNum|17
+  gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|18
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x0b002000
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00000439
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9F7C0000
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9FF90000
   gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000
   gEmbeddedTokenSpaceGuid.PcdPrePiCpuIoSize|44
 
