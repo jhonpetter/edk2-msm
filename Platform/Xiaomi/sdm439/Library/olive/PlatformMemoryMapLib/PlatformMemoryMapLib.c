@@ -31,9 +31,9 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
     /* HLOS / Memória Livre do Sistema */
     {"HLOS Region",       0x91400000, 0x0E400000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
     
-    /* UEFI Firmware & Debug */
-    {"FV Region",         0x9F800000, 0x00400000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
-    {"DBI Dump",          0x9FC00000, 0x00300000, NoHob,  MMAP_IO, INITIALIZED, Reserv, UNCACHED_UNBUFFERED_XN},
+    /* UEFI Firmware & Debug (Ajustado para .fd de 8MB) */
+    {"FV Region",         0x9F800000, 0x00800000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
+    {"DBI Dump",          0xA0000000, 0x00300000, NoHob,  MMAP_IO, INITIALIZED, Reserv, UNCACHED_UNBUFFERED_XN},
     
     /* Região PStore (Ajustado para NoHob conforme DTS) */
     {"PStore Region",     0x9FF00000, 0x00100000, NoHob,  MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
