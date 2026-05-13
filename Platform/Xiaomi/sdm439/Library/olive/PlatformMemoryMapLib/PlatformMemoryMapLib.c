@@ -13,12 +13,13 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
     {"RAM Partition",     0x80000000, 0x04A00000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
     
     /* Regiões de Hardware Separadas (Conforme DTS) */
-    {"Other Ext Region",  0x84A00000, 0x01D00000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
-    
+    {"Other Ext Region",  0x84A00000, 0x01900000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
+    {"SMEM",              0x86300000, 0x00100000, AddMem, MEM_RES, WRITE_COMBINEABLE, Reserv, UNCACHED_UNBUFFERED},
+
     /* UEFI Runtime (Ajustado para o espaço vago em 0x86700000) */
-    {"Runtime Data",      0x86700000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN},
-    {"Runtime Code",      0x86780000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtCode, WRITE_BACK_XN},
-    
+    {"Runtime Data",      0x86400000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN},
+    {"Runtime Code",      0x86480000, 0x00080000, AddMem, SYS_MEM, SYS_MEM_CAP, RtCode, WRITE_BACK_XN},
+
     /* Divisão Fiel do Subsistema de Processadores (PIL Separado) */
     {"Modem Region",      0x86800000, 0x05500000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
     {"ADSP FW Region",    0x8BD00000, 0x01800000, AddMem, MEM_RES, SYS_MEM_CAP, Reserv, NS_DEVICE},
@@ -52,8 +53,8 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
     {"Info Blk",          0x9FFFF000, 0x00001000, AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN},
     {"DXE Heap",          0xA0000000, 0x2E000000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
     {"UEFI FD",           0xCE000000, 0x02000000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-    {"IMEM Base",         0x08600000, 0x00040000, NoHob,  MMAP_IO, INITIALIZED, Conv,   NS_DEVICE},
-    {"IMEM Cookie Base",  0x0863F000, 0x00001000, AddDev, MMAP_IO, INITIALIZED, Conv,   NS_DEVICE},
+    {"IMEM Base",         0x08600000, 0x00001000,  NoHob,  MMAP_IO, INITIALIZED, Conv,   NS_DEVICE},
+    {"IMEM Cookie Base",  0x08601000, 0x00001000,  AddDev, MMAP_IO, INITIALIZED, Conv,   NS_DEVICE},
     {"QDSS_STM",          0x06000000, 0x01000000, AddDev, MMAP_IO, INITIALIZED, Conv,   NS_DEVICE},
     /* Register regions - SDM439 Olive IO Devices */
     {"BOOT_CONFIG",       0x00060000, 0x00010000,  AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE},
