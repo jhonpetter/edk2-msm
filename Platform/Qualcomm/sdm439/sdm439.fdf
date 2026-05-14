@@ -134,9 +134,10 @@ READ_LOCK_STATUS   = TRUE
   #
   # USB Host Support
   #
-  INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseDxe/UsbMouseDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
+  # Disabled: USB host drivers not needed for basic display boot
+  # INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
+  # INF MdeModulePkg/Bus/Usb/UsbMouseDxe/UsbMouseDxe.inf
+  # INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   #
   # FAT filesystem + GPT/MBR partitioning

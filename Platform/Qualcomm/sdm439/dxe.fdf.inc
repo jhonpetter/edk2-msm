@@ -28,23 +28,26 @@
     SECTION UI = "PlatformInfoDxeDriver"
   }
 
-  FILE DRIVER = 7942a7eb-b7d5-4e2e-b908-831e4de55b58 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/GlinkDxe/GlinkDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/GlinkDxe/GlinkDxe.efi
-    SECTION UI = "GlinkDxe"
-  }
+  # Disabled: IPC driver, not needed for basic display boot
+  # FILE DRIVER = 7942a7eb-b7d5-4e2e-b908-831e4de55b58 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/GlinkDxe/GlinkDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/GlinkDxe/GlinkDxe.efi
+  #   SECTION UI = "GlinkDxe"
+  # }
 
-  FILE DRIVER = e43128a8-8692-42b6-8afa-676158578d18 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/ULogDxe/ULogDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/ULogDxe/ULogDxe.efi
-    SECTION UI = "ULogDxe"
-  }
+  # Disabled: logging driver, not needed for basic display boot
+  # FILE DRIVER = e43128a8-8692-42b6-8afa-676158578d18 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/ULogDxe/ULogDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/ULogDxe/ULogDxe.efi
+  #   SECTION UI = "ULogDxe"
+  # }
 
-  FILE DRIVER = cb29f4d1-7f37-4692-a416-93e82e219711 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/NpaDxe/NpaDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/NpaDxe/NpaDxe.efi
-    SECTION UI = "NpaDxe"
-  }
+  # Disabled: power architecture driver, not needed for basic display boot
+  # FILE DRIVER = cb29f4d1-7f37-4692-a416-93e82e219711 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/NpaDxe/NpaDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/NpaDxe/NpaDxe.efi
+  #   SECTION UI = "NpaDxe"
+  # }
 
   FILE DRIVER = 4db5dea6-5302-4d1a-8a82-677a683b0d29 {
     SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/ClockDxe/ClockDxe.depex
@@ -52,11 +55,12 @@
     SECTION UI = "ClockDxe"
   }
 
-  FILE DRIVER = 0d35cd8e-97ea-4f9a-96af-0f0d89f76567 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UFSDxe/UFSDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UFSDxe/UFSDxe.efi
-    SECTION UI = "UFSDxe"
-  }
+  # Disabled: UFS storage driver - SDM439 Olive uses eMMC (SDHCI), NOT UFS
+  # FILE DRIVER = 0d35cd8e-97ea-4f9a-96af-0f0d89f76567 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UFSDxe/UFSDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UFSDxe/UFSDxe.efi
+  #   SECTION UI = "UFSDxe"
+  # }
 
   FILE DRIVER = 8681cc5a-0df6-441e-b4b8-e915c538f067 {
     SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/DALTLMM/DALTLMM.depex
@@ -70,98 +74,114 @@
     SECTION UI = "SPMI"
   }
 
-  FILE DRIVER = F10F76DB-42C1-533F-34A8-69BE24653110 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/SdccDxe/SdccDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/SdccDxe/SdccDxe.efi
-    SECTION UI = "SdccDxe"
-  }
+  # Disabled: eMMC storage driver, not needed for basic display boot
+  # FILE DRIVER = F10F76DB-42C1-533F-34A8-69BE24653110 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/SdccDxe/SdccDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/SdccDxe/SdccDxe.efi
+  #   SECTION UI = "SdccDxe"
+  # }
 
-  FILE DRIVER = C44697D5-B4AA-4030-9749-29860844183D {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/PmicDxe/PmicDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/PmicDxe/PmicDxe.efi
-    SECTION UI = "PmicDxe"
-  }
+  # Disabled: PMIC driver, not needed for basic display boot (bootloader already set power)
+  # FILE DRIVER = C44697D5-B4AA-4030-9749-29860844183D {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/PmicDxe/PmicDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/PmicDxe/PmicDxe.efi
+  #   SECTION UI = "PmicDxe"
+  # }
 
-  FILE DRIVER = 7a32bd23-f735-4f57-aa1a-447d2fe3be0d {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/SPI/SPI.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/SPI/SPI.efi
-    SECTION UI = "SPI"
-  }
+  # Disabled: SPI bus driver, not needed for basic display boot
+  # FILE DRIVER = 7a32bd23-f735-4f57-aa1a-447d2fe3be0d {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/SPI/SPI.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/SPI/SPI.efi
+  #   SECTION UI = "SPI"
+  # }
 
-  FILE DRIVER = 04de8591-d2b3-4077-bbbe-b12070094eb6 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/I2C/I2C.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/I2C/I2C.efi
-    SECTION UI = "I2C"
-  }
+  # Disabled: I2C bus driver, not needed for basic display boot
+  # FILE DRIVER = 04de8591-d2b3-4077-bbbe-b12070094eb6 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/I2C/I2C.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/I2C/I2C.efi
+  #   SECTION UI = "I2C"
+  # }
 
   // No ButtonsDxe here
 
-  FILE DRIVER = 5A5CB8CA-9382-4E0C-B383-77FB517CD9EB {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/AdcDxe/AdcDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/AdcDxe/AdcDxe.efi
-    SECTION UI = "AdcDxe"
-  }
+  # Disabled: ADC driver, not needed for basic display boot
+  # FILE DRIVER = 5A5CB8CA-9382-4E0C-B383-77FB517CD9EB {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/AdcDxe/AdcDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/AdcDxe/AdcDxe.efi
+  #   SECTION UI = "AdcDxe"
+  # }
 
-  FILE DRIVER = 88ABF42E-EFA7-4D72-A9C8-8B29ACDCF64F {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/MpPowerDxe/MpPowerDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/MpPowerDxe/MpPowerDxe.efi
-    SECTION UI = "MpPowerDxe"
-  }
+  # Disabled: MP power driver, not needed for basic display boot
+  # FILE DRIVER = 88ABF42E-EFA7-4D72-A9C8-8B29ACDCF64F {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/MpPowerDxe/MpPowerDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/MpPowerDxe/MpPowerDxe.efi
+  #   SECTION UI = "MpPowerDxe"
+  # }
 
-  FILE DRIVER = DD0616C8-B50D-4A58-B9BE-10C9F3F7156C {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbTypeCDxe/UsbTypeCDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbTypeCDxe/UsbTypeCDxe.efi
-    SECTION UI = "UsbTypeCDxe"
-  }
+  # WRONG DEVICE: SDM439 Olive has Micro-USB, NOT USB Type-C
+  # FILE DRIVER = DD0616C8-B50D-4A58-B9BE-10C9F3F7156C {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbTypeCDxe/UsbTypeCDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbTypeCDxe/UsbTypeCDxe.efi
+  #   SECTION UI = "UsbTypeCDxe"
+  # }
 
-  FILE DRIVER = 94F8A6A7-DC34-4101-88C1-99179CCEAE83 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbfnDwc3Dxe/UsbfnDwc3Dxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbfnDwc3Dxe/UsbfnDwc3Dxe.efi
-    SECTION UI = "UsbfnDwc3Dxe"
-  }
+  # WRONG DEVICE: SDM439 has DWC2/HSUSB (qcom,hsusb-otg), NOT DWC3
+  # FILE DRIVER = 94F8A6A7-DC34-4101-88C1-99179CCEAE83 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbfnDwc3Dxe/UsbfnDwc3Dxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbfnDwc3Dxe/UsbfnDwc3Dxe.efi
+  #   SECTION UI = "UsbfnDwc3Dxe"
+  # }
 
-  FILE DRIVER = BEB12BEE-F6E1-11E1-9FB8-6C626DE4AEB1 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/XhciPciEmulation/XhciPciEmulation.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/XhciPciEmulation/XhciPciEmulation.efi
-    SECTION UI = "XhciPciEmulation"
-  }
+  # WRONG DEVICE: SDM439 has EHCI (USB 2.0), NOT XHCI (USB 3.0)
+  # FILE DRIVER = BEB12BEE-F6E1-11E1-9FB8-6C626DE4AEB1 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/XhciPciEmulation/XhciPciEmulation.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/XhciPciEmulation/XhciPciEmulation.efi
+  #   SECTION UI = "XhciPciEmulation"
+  # }
 
-  FILE DRIVER = B7F50E91-A759-412C-ADE4-DCD03E7F7C28 {
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/XhciDxe/XhciDxe.efi
-    SECTION UI = "XhciDxe"
-  }
+  # WRONG DEVICE: SDM439 has EHCI (USB 2.0), NOT XHCI (USB 3.0)
+  # FILE DRIVER = B7F50E91-A759-412C-ADE4-DCD03E7F7C28 {
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/XhciDxe/XhciDxe.efi
+  #   SECTION UI = "XhciDxe"
+  # }
 
-  FILE DRIVER = 2D2E62CF-9ECF-43B7-8219-94E7FC713DFE {
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbKbDxe/UsbKbDxe.efi
-    SECTION UI = "UsbKbDxe"
-  }
+  # Disabled: USB keyboard, not needed for basic display boot
+  # FILE DRIVER = 2D2E62CF-9ECF-43B7-8219-94E7FC713DFE {
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbKbDxe/UsbKbDxe.efi
+  #   SECTION UI = "UsbKbDxe"
+  # }
 
-  FILE DRIVER = 5AF77F10-90DF-4E7E-8325-A17EC09D5443 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbMsdDxe/UsbMsdDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbMsdDxe/UsbMsdDxe.efi
-    SECTION UI = "UsbMsdDxe"
-  }
+  # Disabled: USB mass storage, not needed for basic display boot
+  # FILE DRIVER = 5AF77F10-90DF-4E7E-8325-A17EC09D5443 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbMsdDxe/UsbMsdDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbMsdDxe/UsbMsdDxe.efi
+  #   SECTION UI = "UsbMsdDxe"
+  # }
 
-  FILE DRIVER = 3299A266-15F0-4346-8318-716336736D3E {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbDeviceDxe/UsbDeviceDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbDeviceDxe/UsbDeviceDxe.efi
-    SECTION UI = "UsbDeviceDxe"
-  }
+  # Disabled: USB device, not needed for basic display boot
+  # FILE DRIVER = 3299A266-15F0-4346-8318-716336736D3E {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbDeviceDxe/UsbDeviceDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbDeviceDxe/UsbDeviceDxe.efi
+  #   SECTION UI = "UsbDeviceDxe"
+  # }
 
-  FILE DRIVER = CD823A4D-7DEC-4531-AE5D-4134FA4127B8 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbConfigDxe/UsbConfigDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbConfigDxe/UsbConfigDxe.efi
-    SECTION UI = "UsbConfigDxe"
-  }
+  # Disabled: USB config, not needed for basic display boot
+  # FILE DRIVER = CD823A4D-7DEC-4531-AE5D-4134FA4127B8 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbConfigDxe/UsbConfigDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbConfigDxe/UsbConfigDxe.efi
+  #   SECTION UI = "UsbConfigDxe"
+  # }
 
-  FILE DRIVER = 0A134F0E-075E-40B3-9C63-3B3906804663 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbInitDxe/UsbInitDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbInitDxe/UsbInitDxe.efi
-    SECTION UI = "UsbInitDxe"
-  }
+  # Disabled: USB init, not needed for basic display boot
+  # FILE DRIVER = 0A134F0E-075E-40B3-9C63-3B3906804663 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbInitDxe/UsbInitDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbInitDxe/UsbInitDxe.efi
+  #   SECTION UI = "UsbInitDxe"
+  # }
 
-  FILE DRIVER = 51D4273A-C3FB-48FD-B5B7-97CE091A58A6 {
-    SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbfnChgDxe/UsbfnChgDxe.depex
-    SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbfnChgDxe/UsbfnChgDxe.efi
-    SECTION UI = "UsbfnChgDxe"
-  }
+  # Disabled: USB charging, not needed for basic display boot
+  # FILE DRIVER = 51D4273A-C3FB-48FD-B5B7-97CE091A58A6 {
+  #   SECTION DXE_DEPEX = Platform/EFI_Binaries/Drivers/sdm439/UsbfnChgDxe/UsbfnChgDxe.depex
+  #   SECTION PE32 = Platform/EFI_Binaries/Drivers/sdm439/UsbfnChgDxe/UsbfnChgDxe.efi
+  #   SECTION UI = "UsbfnChgDxe"
+  # }
